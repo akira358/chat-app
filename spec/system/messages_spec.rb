@@ -107,8 +107,9 @@ RSpec.describe 'メッセージ投稿機能', type: :system do
       # 「チャットを終了する」ボタンをクリックすることで、作成した5つのメッセージが削除されていることを確認する
       expect {
         find_link('チャットを終了する', href: room_path(@room_user.room)).click
-      }.to change { @room_user.room.message.count }.by(-5)
+      }.to change { @room_user.room.messages.count }.by(-5)
       # トップページに遷移していることを確認する
-      expect(current_path).to eq(room_path)
+      expect(current_path).to eq(root_path)
+    end
   end
 end
